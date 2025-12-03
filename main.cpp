@@ -145,6 +145,11 @@ bool dfs(int r, int c,
         return false;
     }
 
+    // Base case 4: Check if reached exit
+    if (r == exit_r && c == exit_c) {
+        return true;
+    }
+
     // Mark current cell as visited
     visited[r][c] = true;
 
