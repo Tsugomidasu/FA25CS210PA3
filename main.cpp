@@ -123,9 +123,32 @@ bool dfs(int r, int c,
          vector<vector<int>>& parent_r,
          vector<vector<int>>& parent_c,
          int exit_r, int exit_c) {
-    // Function signature (temporary) with placeholder return
+    // Function signature (temporary)
     cout << "Debug: DFS called at (" << r << "," << c << ")" << endl;
-    return false;
+
+    // Get maze dimensions
+    int N = maze.size();
+    int M = maze[0].size();
+
+    // Base case 1: Check if out of bounds
+    if (r < 0 || r >= N || c < 0 || c >= M) {
+        return false;
+    }
+
+    // Base case 2: Check if wall
+    if (maze[r][c] == 1) {
+        return false;
+    }
+
+    // Base case 3: Check if already visited
+    if (visited[r][c]) {
+        return false;
+    }
+
+    // Mark current cell as visited
+    visited[r][c] = true;
+
+    return false; // Placeholder return
 }
 
 
