@@ -146,6 +146,12 @@ bool dfs(int r, int c,
         return false;
     }
 
+    // Set parent if there is one
+    if (parent_row != -1 && parent_col != -1) {
+        parent_r[r][c] = parent_row;
+        parent_c[r][c] = parent_col;
+    }
+
     // Base case 4: Check if reached exit
     if (r == exit_r && c == exit_c) {
         return true;
@@ -154,11 +160,6 @@ bool dfs(int r, int c,
     // Mark current cell as visited
     visited[r][c] = true;
 
-    // Set parent if there is one
-    if (parent_row != -1 && parent_col != -1) {
-        parent_r[r][c] = parent_row;
-        parent_c[r][c] = parent_col;
-    }
 
     // Explore all 4 directions
     for (int i = 0; i < 4; i++) {
