@@ -122,7 +122,8 @@ bool dfs(int r, int c,
          vector<vector<bool>>& visited,
          vector<vector<int>>& parent_r,
          vector<vector<int>>& parent_c,
-         int exit_r, int exit_c) {
+         int exit_r, int exit_c,
+         int parent_row = -1, int parent_col = -1) {
     // Function signature (temporary)
     cout << "Debug: DFS called at (" << r << "," << c << ")" << endl;
 
@@ -153,7 +154,24 @@ bool dfs(int r, int c,
     // Mark current cell as visited
     visited[r][c] = true;
 
-    return false; // Placeholder return
+    // Set parent if there is one
+    if (parent_row != -1 && parent_col != -1) {
+        parent_r[r][c] = parent_row;
+        parent_c[r][c] = parent_col;
+    }
+
+    // Explore all 4 directions
+    for (int i = 0; i < 4; i++) {
+        int nr = r + dr[i];
+        int nc = c + dc[i];
+
+        // Recursively explore neighbor.
+        if (dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c, r, c)) {
+            return true;
+        }
+    }
+
+    return false; // No path found from this cell
 }
 
 
