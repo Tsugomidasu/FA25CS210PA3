@@ -124,8 +124,6 @@ bool dfs(int r, int c,
          vector<vector<int>>& parent_c,
          int exit_r, int exit_c,
          int parent_row = -1, int parent_col = -1) {
-    // Function signature (temporary)
-    cout << "Debug: DFS called at (" << r << "," << c << ")" << endl;
 
     // Get maze dimensions
     int N = maze.size();
@@ -160,13 +158,12 @@ bool dfs(int r, int c,
     // Mark current cell as visited
     visited[r][c] = true;
 
-
     // Explore all 4 directions
     for (int i = 0; i < 4; i++) {
         int nr = r + dr[i];
         int nc = c + dc[i];
 
-        // Recursively explore neighbor.
+        // Recursive call
         if (dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c, r, c)) {
             return true;
         }
