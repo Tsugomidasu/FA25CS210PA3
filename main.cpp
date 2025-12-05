@@ -159,7 +159,7 @@ bool dfs(int r, int c,
     visited[r][c] = true;
 
     // Explore all 4 directions
-    for (int i = 0; i < 4; i++) {
+    for (int i = 3; i > 0; i--) {
         int nr = r + dr[i];
         int nc = c + dc[i];
 
